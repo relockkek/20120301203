@@ -42,7 +42,7 @@ public partial class _201025Context : DbContext
 
             entity.ToTable("Application");
 
-            entity.HasIndex(e => e.DepartamentId, "FK_Application_Department_id");
+            entity.HasIndex(e => e.DepartmentId, "FK_Application_Department_id");
 
             entity.HasIndex(e => e.EmployeeId, "FK_Application_Employee_id");
 
@@ -58,9 +58,9 @@ public partial class _201025Context : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
-            entity.Property(e => e.DepartamentId)
+            entity.Property(e => e.DepartmentId)
                 .HasColumnType("int(11)")
-                .HasColumnName("departament_id");
+                .HasColumnName("department_id");
             entity.Property(e => e.EmployeeId)
                 .HasColumnType("int(11)")
                 .HasColumnName("employee_id");
@@ -79,8 +79,8 @@ public partial class _201025Context : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
 
-            entity.HasOne(d => d.Departament).WithMany(p => p.Applications)
-                .HasForeignKey(d => d.DepartamentId)
+            entity.HasOne(d => d.Department).WithMany(p => p.Applications)
+                .HasForeignKey(d => d.DepartmentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Application_Department_id");
 
@@ -113,20 +113,20 @@ public partial class _201025Context : DbContext
 
             entity.ToTable("Employee");
 
-            entity.HasIndex(e => e.DepartamentId, "FK_Employee_Department_id");
+            entity.HasIndex(e => e.DepartmentId, "FK_Employee_Department_id");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
-            entity.Property(e => e.DepartamentId)
+            entity.Property(e => e.DepartmentId)
                 .HasColumnType("int(11)")
-                .HasColumnName("departament_id");
+                .HasColumnName("department_id");
             entity.Property(e => e.FullName)
                 .HasMaxLength(255)
                 .HasColumnName("full_name");
 
-            entity.HasOne(d => d.Departament).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.DepartamentId)
+            entity.HasOne(d => d.Department).WithMany(p => p.Employees)
+                .HasForeignKey(d => d.DepartmentId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Employee_Department_id");
         });

@@ -19,7 +19,7 @@ public partial class Application
 
     public string? Purprose { get; set; }
 
-    public int DepartamentId { get; set; }
+    public int DepartmentId { get; set; }
 
     public int EmployeeId { get; set; }
 
@@ -29,7 +29,7 @@ public partial class Application
 
     public DateTime? UpdatedAt { get; set; }
 
-    public virtual Department Departament { get; set; } = null!;
+    public virtual Department Department { get; set; } = null!;
 
     public virtual Employee Employee { get; set; } = null!;
 
